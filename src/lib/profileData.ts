@@ -82,11 +82,10 @@ export const PROFILE: ProfileData = {
       tools: ["GitHub", "VS Code"],
       points: [
         { text: "상단 메뉴 버튼으로 각 내용 위치로 이동, 현재 위치 표시", done: true },
-        { text: "Next.js 와 TypeScript 로 작성, Vercel 배포 예정", done: true },
-        { text: "MongoDB 연동은 구현 예정", done: false },
+        { text: "Next.js 와 TypeScript 로 작성, Vercel 배포", done: true },
+        { text: "MongoDB 연동", done: false },
       ],
-      repo: "https://github.com/k35864316-spec/web_server_portfolio",
-      demo: "https://web-server-portfolio.vercel.app/",
+      repo: "https://github.com/k35864316-spec/web-server-portfolio",
     },
   ],
   links: [
