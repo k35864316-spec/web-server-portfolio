@@ -1,0 +1,4 @@
+// 삭제 예정 파일입니다. (방명록 기능을 제거했습니다)
+export function GET() {
+  return new Response(null, { status: 404 });
+}
