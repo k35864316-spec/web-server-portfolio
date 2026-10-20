@@ -1,12 +1,11 @@
 import type { ProfileData } from "@/lib/profileData";
-import { countStackUsage, formatPercent } from "@/lib/stackStats";
+import { formatPercent, type StackCount } from "@/lib/stackStats";
 import { C, S, STACK_COLORS } from "@/lib/theme";
 
 const CHART_H = 200;
 const GAP = "clamp(12px, 4vw, 36px)";
 
-export default function Stack({ p }: { p: ProfileData }) {
-  const usage = countStackUsage(p.projects);
+export default function Stack({ p, usage }: { p: ProfileData; usage: StackCount[] }) {
   const max = Math.max(1, ...usage.map((u) => u.percent));
 
   return (

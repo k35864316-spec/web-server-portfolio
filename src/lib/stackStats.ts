@@ -15,6 +15,11 @@ export function countStackUsage(projects = PROFILE.projects): StackCount[] {
       counts.set(tech, (counts.get(tech) ?? 0) + 1);
     }
   }
+  return toStackCounts(counts);
+}
+
+/** 기술 이름 → 사용 횟수 를 비율(%)이 붙은 목록으로 바꾼다. (많이 쓴 순서, 같으면 이름 순) */
+export function toStackCounts(counts: Map<string, number>): StackCount[] {
   const total = [...counts.values()].reduce((a, b) => a + b, 0) || 1;
   return [...counts.entries()]
     .map(([name, count]) => ({ name, count, percent: (count / total) * 100 }))
