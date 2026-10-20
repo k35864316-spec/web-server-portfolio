@@ -10,7 +10,17 @@ import { S } from "@/lib/theme";
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const { data: p } = await getProfile();
+  const { data, fromDb } = await getProfile();
+  // MongoDB 에서 실제로 읽어 왔을 때만 "MongoDB 연동" 항목을 완료로 표시한다.
+  const p = fromDb
+    ? {
+        ...data,
+        projects: data.projects.map((pr) => ({
+          ...pr,
+          points: pr.points.map((x) => (x.text === "MongoDB 연동" ? { ...x, done: true } : x)),
+        })),
+      }
+    : data;
   return (
     <>
       <Sidebar name={p.name} />
@@ -18,7 +28,7 @@ export default async function Home() {
         <Main p={p} />
         <Stack p={p} />
         <Project p={p} />
-        <About p={p} />
+        <About p={p} db={fromDb} />
       </main>
     </>
   );

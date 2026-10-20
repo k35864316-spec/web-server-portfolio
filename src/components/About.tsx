@@ -1,7 +1,7 @@
 import type { ProfileData } from "@/lib/profileData";
 import { C, S } from "@/lib/theme";
 
-export default function About({ p }: { p: ProfileData }) {
+export default function About({ p, db }: { p: ProfileData; db: boolean }) {
   const rows = [
     { label: "이름", value: p.name },
     { label: "소속", value: p.school },
@@ -31,7 +31,7 @@ export default function About({ p }: { p: ProfileData }) {
           </dd>
         </div>
       </dl>
-      <p style={{ ...S.sub, marginTop: 56 }}>Next.js · MongoDB · Vercel · 웹서버보안프로그래밍 2026</p>
+      <p style={{ ...S.sub, marginTop: 56 }}>Next.js · MongoDB · Vercel · 웹서버보안프로그래밍 2026 · {db ? "MongoDB 연결됨" : "MongoDB 미연결 (기본 데이터 표시 중)"}</p>
     </section>
   );
 }
